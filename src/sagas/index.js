@@ -1,30 +1,25 @@
-import { all, put, takeEvery, call } from 'redux-saga/effects';
+import { all, takeLatest, put, call } from 'redux-saga/effects';
+import { MESSAGE_REQUEST, MESSAGE_CALL_SUCCESS, MESSAGE_CALL_FAILURE } from '../actions'
 import { fetchData } from '../request';
-
-/* THIS PART GOES INTO A MODULE */
-// Saga Watcher: Dispatch actions to the redux store, trigers worker sagas
-function* watchMessageRequest(){
-  // grab the latest dispatch
-  yield takeLatest("API_CALL_REQUEST", messageRequest);
-}
 
 function* messageRequest(){
   try {
     // call for the messages data
     const response = yield call(fetchData);
-    const date = response.data;
+    const data = response.data;
 
-    yield put({ type: API_CALL_SUCCESS, data });
+    yield put({ type: MESSAGE_CALL_SUCCESS, data });
   } catch (error){
-
-    yield put({ type: "API_CALL_FAILURE", error });
+    yield put({ type: MESSAGE_CALL_FAILURE, error });
   }
 }
 
-/* THIS IS THE ROOT THAT STAYS */
+// MODULE MESSENGER SAGAS <-- MAKE THIS IT's OWN MODULE
+const messengerSagas = [
+  takeLatest( MESSAGE_REQUEST, messageRequest)
+]
 
+// MODULE: ROOT SAGA
 export default function* rootSaga(){
-  yield all([
-    watchMessageRequest()
-  ]);
+  yield all(messengerSagas);
 }

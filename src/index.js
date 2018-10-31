@@ -8,7 +8,7 @@ import createSagaMiddleware from "redux-saga";
 import { Provider } from 'react-redux';
 
 import reducer from './reducers'
-import { watcherSaga } from './sagas';
+import rootSaga from './sagas/index';
 
 //create the saga middleware
 const sagaMiddleware = createSagaMiddleware();
@@ -23,7 +23,7 @@ let store = createStore(
 );
 
 // run the saga
-sagaMiddleware.run(watcherSaga);
+sagaMiddleware.run(rootSaga);
 
 // check up on the state as it updates
 //store.subscribe(() => console.log(store.getState()));

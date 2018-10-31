@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import MessageComposer from '../containers/messageComposer';
 import { connect } from 'react-redux';
 
-import { apiCallRequest } from '../actions';
+import { messageRequest } from '../actions';
 
 const mapStateToProps = (state) => {
   return {
@@ -16,7 +16,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onRequestData: () => {
-      dispatch(apiCallRequest())
+      dispatch(messageRequest())
     }
   }
 }

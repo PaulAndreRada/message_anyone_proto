@@ -30,3 +30,8 @@ function* workerSaga() {
     yield put({ type: "API_CALL_FAILURE", error });
   }
 }
+
+export default function* rootSaga(){
+
+
+}

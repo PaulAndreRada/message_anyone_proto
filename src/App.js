@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Messenger from './components/messenger';
+import Messenger from './containers/messenger';
 import './App.css';
 
 
