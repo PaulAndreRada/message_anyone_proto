@@ -2,9 +2,9 @@ export const UPDATE_COMPOSER = "UPDATE_COMPOSER"
 export const ADD_MESSAGE = "ADD_MESSAGE"
 
 // @network Action types
-export const MESSAGE_REQUEST = "MESSAGE_REQUEST";
-export const MESSAGE_CALL_SUCCESS = "MESSAGE_CALL_SUCCESS";
-export const MESSAGE_CALL_FAILURE = "MESSAGE_CALL_FAILURE";
+export const SEND_MESSAGE = "SEND_MESSAGE";
+export const SEND_MESSAGE_SUCCESS = "SEND_MESSAGE_SUCCESS";
+export const SEND_MESSAGE_FAILURE = "SEND_MESSAGE_FAILURE";
 
 export const addMessage = (text) => {
   return {
@@ -21,22 +21,23 @@ export const updateComposer = (text) => {
 }
 
 // @network action creators
-export const messageRequest = () => {
+export const sendMessage = (message) => {
   return {
-    type: MESSAGE_REQUEST,
+    type: SEND_MESSAGE,
+    message
   }
 }
 
-export const messageCallSuccess = (data) => {
+export const sendMessageSuccess = (data) => {
   return {
-    type: MESSAGE_CALL_SUCCESS,
+    type: SEND_MESSAGE_SUCCESS,
     data
   }
 }
 
-export const messageCallFailure = (error) => {
+export const sendMessageFailure = (error) => {
   return {
-    type: MESSAGE_CALL_FAILURE,
+    type: SEND_MESSAGE_FAILURE,
     error
   }
 }

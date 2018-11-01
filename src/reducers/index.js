@@ -37,19 +37,19 @@ const networkInitState = {
 // @network
 export function network(state = networkInitState, action) {
   switch (action.type) {
-    case Actions.MESSAGE_REQUEST:
+    case Actions.SEND_MESSAGE:
       return {
         ...state,
         fetching: true,
         error: null
       };
-    case Actions.MESSAGE_CALL_SUCCESS:
+    case Actions.SEND_MESSAGE_SUCCESS:
       return {
         ...state,
         fetching: false,
         data: action.data,
       }
-    case Actions.MESSAGE_CALL_FAILURE:
+    case Actions.SEND_MESSAGE_FAILURE:
       return {
         ...state,
         fetching: false,

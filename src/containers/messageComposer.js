@@ -1,11 +1,11 @@
 import { connect } from 'react-redux'
-import { updateComposer, addMessage } from '../actions'
+import { updateComposer, sendMessage } from '../actions'
 import MessageInput from '../components/messageInput.js'
 
 
 const mapStateToProps = (state) => {
   return{
-    composerText: state.messageComposer.composerText
+    composerText: state.messageComposer.composerText,
   }
 }
 
@@ -14,8 +14,9 @@ const mapDispatchToProps = (dispatch) => {
     onTextChange: (text) => {
       dispatch(updateComposer(text))
     },
-    onMessageSubmit: (text) => {
-      dispatch(addMessage(text))
+    onMessagePost: (e,msg) => {
+      e.preventDefault();
+      dispatch(sendMessage(msg))
     }
   }
 }
