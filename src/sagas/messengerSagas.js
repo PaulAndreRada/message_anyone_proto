@@ -15,7 +15,6 @@ function* sendMessage(data){
   }
 }
 
-
 // root messenger sagas exports
 const messengerSagas = [
   takeLatest(SEND_MESSAGE, sendMessage)
