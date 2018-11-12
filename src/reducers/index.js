@@ -1,19 +1,6 @@
 import { combineReducers } from 'redux'
 import * as Actions from '../actions'
 
-
-function messages( state={}, action ){
-  switch(action.type){
-    case Actions.ADD_MESSAGE:
-      return{
-          ...state,
-          message: action.text
-      }
-    default:
-      return state
-  }
-}
-
 function messageComposer( state={composerText:''}, action ){
   switch(action.type) {
     case Actions.UPDATE_COMPOSER:
@@ -26,7 +13,6 @@ function messageComposer( state={composerText:''}, action ){
   }
 }
 
-
 // @network
 const networkInitState = {
   fetching: false,
@@ -35,7 +21,7 @@ const networkInitState = {
 }
 
 // @network
-export function network(state = networkInitState, action) {
+export function messengerNetwork(state = networkInitState, action) {
   switch (action.type) {
     case Actions.SEND_MESSAGE:
       return {
@@ -47,7 +33,7 @@ export function network(state = networkInitState, action) {
       return {
         ...state,
         fetching: false,
-        data: action.data,
+        messages: action.messages,
       }
     case Actions.SEND_MESSAGE_FAILURE:
       return {
@@ -55,15 +41,38 @@ export function network(state = networkInitState, action) {
         fetching: false,
         error: action.error
       }
+  case Actions.LOAD_MESSAGES:
+    return {
+      ...state,
+      fetching: true,
+      error: null
+    }
+  case Actions.POLL_FOR_MESSAGES:
+    return {
+      ...state,
+      fetching: true,
+      error: null,
+    }
+  case Actions.LOAD_MESSAGES_SUCCESS:
+    return {
+      ...state,
+      fetching: false,
+      messages: action.messages,
+    }
+  case Actions.LOAD_MESSAGES_FAILURE:
+    return {
+      ...state,
+      fetching: false,
+      error: action.error
+    }
     default:
       return state;
   }
 }
 
 const reducer = combineReducers({
-  messages,
   messageComposer,
-  network
+  messengerNetwork
 })
 
 export default reducer;

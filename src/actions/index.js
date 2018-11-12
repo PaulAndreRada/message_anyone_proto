@@ -1,10 +1,14 @@
 export const UPDATE_COMPOSER = "UPDATE_COMPOSER"
 export const ADD_MESSAGE = "ADD_MESSAGE"
 
-// @network Action types
+// Messenger @Network Action types
 export const SEND_MESSAGE = "SEND_MESSAGE";
 export const SEND_MESSAGE_SUCCESS = "SEND_MESSAGE_SUCCESS";
 export const SEND_MESSAGE_FAILURE = "SEND_MESSAGE_FAILURE";
+export const LOAD_MESSAGES = "LOAD_MESSAGES";
+export const POLL_FOR_MESSAGES = "POLL_FOR_MESSAGES";
+export const LOAD_MESSAGES_SUCCESS = "LOAD_MESSAGES_SUCCESS";
+export const LOAD_MESSAGES_FAILURE = "LOAD_MESSAGES_FAILURE";
 
 export const addMessage = (text) => {
   return {
@@ -20,7 +24,7 @@ export const updateComposer = (text) => {
   }
 }
 
-// @network action creators
+// messenger @network action creators
 export const sendMessage = (message) => {
   return {
     type: SEND_MESSAGE,
@@ -28,16 +32,42 @@ export const sendMessage = (message) => {
   }
 }
 
-export const sendMessageSuccess = (data) => {
+export const sendMessageSuccess = (messages) => {
   return {
     type: SEND_MESSAGE_SUCCESS,
-    data
+    messages
   }
 }
 
 export const sendMessageFailure = (error) => {
   return {
     type: SEND_MESSAGE_FAILURE,
+    error
+  }
+}
+
+export const loadMessages = () => {
+  return {
+    type: LOAD_MESSAGES
+  }
+}
+
+export const pollForMessages = () => {
+  return {
+    type: POLL_FOR_MESSAGES
+  }
+}
+
+export const loadMessagesSuccess = (messages) => {
+  return {
+    type: LOAD_MESSAGES_SUCCESS,
+    messages
+  }
+}
+
+export const loadMessagesFailure = (error) => {
+  return {
+    type: LOAD_MESSAGES_FAILURE,
     error
   }
 }

@@ -19,7 +19,6 @@ class MessageInput extends Component {
   }
   onMessageSubmit(e){
     e.preventDefault();
-    console.log(this.props.composerText);
     this.props.onMessageSubmit(this.props.composerText);
   }
 }

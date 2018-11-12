@@ -1,17 +1,25 @@
 import { connect } from 'react-redux'
 import MessageList from '../components/messageList'
+import { loadMessages, pollForMessages } from '../actions'
 
 const mapStateToProps = (state) => {
   return {
-    fetching: state.network.fetching,
-    data: state.network.data,
-    error: state.network.error,
-    message: state.messages.message
+    fetching: state.messengerNetwork.fetching,
+    data: state.messengerNetwork.messages,
+    error: state.messengerNetwork.error,
+    messages: state.messengerNetwork.messages
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return {}
+  return {
+    onLoad: () => {
+      dispatch(loadMessages());
+      setTimeout(() => {
+        dispatch(pollForMessages());
+      }, 2000);
+    }
+  }
 }
 
 const Messages = connect(

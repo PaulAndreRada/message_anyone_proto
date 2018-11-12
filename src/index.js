@@ -2,31 +2,29 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
-
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from "redux-saga";
+import io from 'socket.io-client';
+import createSocketIoMiddleware from 'redux-socket.io';
 import { Provider } from 'react-redux';
-
 import reducer from './reducers'
 import rootSaga from './sagas/index';
 
-//create the saga middleware
-const sagaMiddleware = createSagaMiddleware();
+let socket = io('http://localhost:5000');
 
-// dev tools middleware
-//const reduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION_ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE();
+// Redux Middleware
+const sagaMiddleware = createSagaMiddleware();
 
 // create a redux store with our reducer above and middleware
 let store = createStore(
   reducer,
-  compose(applyMiddleware(sagaMiddleware)) //reduxDevTools)
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  compose(applyMiddleware(sagaMiddleware)),
+  createSocketIoMiddleware(socket, "server/")
 );
 
-// run the saga
+// run the sagas
 sagaMiddleware.run(rootSaga);
-
-// check up on the state as it updates
-//store.subscribe(() => console.log(store.getState()));
 
 ReactDOM.render(
   <Provider store={store}>
