@@ -9,6 +9,8 @@ export const LOAD_MESSAGES = "LOAD_MESSAGES";
 export const POLL_FOR_MESSAGES = "POLL_FOR_MESSAGES";
 export const LOAD_MESSAGES_SUCCESS = "LOAD_MESSAGES_SUCCESS";
 export const LOAD_MESSAGES_FAILURE = "LOAD_MESSAGES_FAILURE";
+// Socket
+export const LISTEN_TO_SERVER = "LISTEN_TO_SERVER";
 
 export const addMessage = (text) => {
   return {
@@ -69,5 +71,11 @@ export const loadMessagesFailure = (error) => {
   return {
     type: LOAD_MESSAGES_FAILURE,
     error
+  }
+}
+
+export const listenToServer = () => {
+  return {
+    type: LISTEN_TO_SERVER
   }
 }

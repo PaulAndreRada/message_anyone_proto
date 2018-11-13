@@ -13,6 +13,19 @@ function messageComposer( state={composerText:''}, action ){
   }
 }
 
+// @socket network
+function socketNetwork(state={}, action){
+  switch(action.type) {
+   case Actions.LISTEN_TO_SERVER:
+     return {
+      ...state,
+      conncted: true
+     }
+     default:
+        return state
+  }
+}
+
 // @network
 const networkInitState = {
   fetching: false,
@@ -21,7 +34,7 @@ const networkInitState = {
 }
 
 // @network
-export function messengerNetwork(state = networkInitState, action) {
+function messengerNetwork(state = networkInitState, action) {
   switch (action.type) {
     case Actions.SEND_MESSAGE:
       return {
@@ -70,9 +83,11 @@ export function messengerNetwork(state = networkInitState, action) {
   }
 }
 
+
 const reducer = combineReducers({
   messageComposer,
-  messengerNetwork
+  messengerNetwork,
+  socketNetwork,
 })
 
 export default reducer;

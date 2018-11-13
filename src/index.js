@@ -4,13 +4,9 @@ import App from './App';
 import './index.css';
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from "redux-saga";
-import io from 'socket.io-client';
-import createSocketIoMiddleware from 'redux-socket.io';
 import { Provider } from 'react-redux';
 import reducer from './reducers'
 import rootSaga from './sagas/index';
-
-let socket = io('http://localhost:5000');
 
 // Redux Middleware
 const sagaMiddleware = createSagaMiddleware();
@@ -20,7 +16,6 @@ let store = createStore(
   reducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   compose(applyMiddleware(sagaMiddleware)),
-  createSocketIoMiddleware(socket, "server/")
 );
 
 // run the sagas
