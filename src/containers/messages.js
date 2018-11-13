@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import MessageList from '../components/messageList'
-import { loadMessages, pollForMessages, listenToServer } from '../actions'
+import { listenToServer } from '../actions'
 
 const mapStateToProps = (state) => {
   return {
@@ -15,10 +15,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onLoad: () => {
       dispatch(listenToServer());
-      dispatch(loadMessages());
-      setTimeout(() => {
-        dispatch(pollForMessages());
-      }, 2000);
     }
   }
 }
