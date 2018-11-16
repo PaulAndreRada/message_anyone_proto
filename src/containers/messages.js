@@ -1,17 +1,22 @@
 import { connect } from 'react-redux'
 import MessageList from '../components/messageList'
+import { listenToServer } from '../actions'
 
 const mapStateToProps = (state) => {
   return {
-    fetching: state.network.fetching,
-    data: state.network.data,
-    error: state.network.error,
-    message: state.messages.message
+    fetching: state.socketNetwork.fetching,
+    data: state.socketNetwork.messages,
+    error: state.socketNetwork.error,
+    messages: state.socketNetwork.messages
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return {}
+  return {
+    onLoad: () => {
+      dispatch(listenToServer());
+    }
+  }
 }
 
 const Messages = connect(
