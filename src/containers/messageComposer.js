@@ -20,6 +20,7 @@ const mapDispatchToProps = (dispatch) => {
     onMessagePost: (e,msg) => {
       e.preventDefault();
       dispatch(sendMessage(msg))
+      dispatch(updateComposer(''));
     }
   }
 }

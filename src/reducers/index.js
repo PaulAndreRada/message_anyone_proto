@@ -13,80 +13,55 @@ function messageComposer( state={composerText:''}, action ){
   }
 }
 
+
+const socketInitState = {
+  fetching: false,
+  connected: false,
+  error: null,
+  messages: null,
+}
+
 // @socket network
-function socketNetwork(state={}, action){
+function socketNetwork(state=socketInitState, action){
   switch(action.type) {
    case Actions.LISTEN_TO_SERVER:
      return {
       ...state,
-      conncted: true
+      fetching: true,
+      conncted: false
      }
-     default:
-        return state
-  }
-}
-
-// @network
-const networkInitState = {
-  fetching: false,
-  data: null,
-  error: null
-}
-
-// @network
-function messengerNetwork(state = networkInitState, action) {
-  switch (action.type) {
+    case Actions.CONNECTED_TO_SERVER:
+      return {
+        ...state,
+        fetching: false,
+        connected: true
+      }
     case Actions.SEND_MESSAGE:
       return {
         ...state,
         fetching: true,
-        error: null
-      };
-    case Actions.SEND_MESSAGE_SUCCESS:
+        connected: true,
+      }
+    case Actions.LOAD_MESSAGES_SUCCESS:
       return {
         ...state,
         fetching: false,
+        connected: true,
         messages: action.messages,
       }
-    case Actions.SEND_MESSAGE_FAILURE:
+    case Actions.LOAD_MESSAGES_FAILURE:
       return {
         ...state,
         fetching: false,
         error: action.error
       }
-  case Actions.LOAD_MESSAGES:
-    return {
-      ...state,
-      fetching: true,
-      error: null
-    }
-  case Actions.POLL_FOR_MESSAGES:
-    return {
-      ...state,
-      fetching: true,
-      error: null,
-    }
-  case Actions.LOAD_MESSAGES_SUCCESS:
-    return {
-      ...state,
-      fetching: false,
-      messages: action.messages,
-    }
-  case Actions.LOAD_MESSAGES_FAILURE:
-    return {
-      ...state,
-      fetching: false,
-      error: action.error
-    }
-    default:
-      return state;
+     default:
+        return state
   }
 }
 
-
 const reducer = combineReducers({
   messageComposer,
-  messengerNetwork,
   socketNetwork,
 })
 

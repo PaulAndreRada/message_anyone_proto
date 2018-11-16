@@ -15,7 +15,7 @@ const sagaMiddleware = createSagaMiddleware();
 let store = createStore(
   reducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  compose(applyMiddleware(sagaMiddleware)),
+  compose(applyMiddleware(sagaMiddleware))
 );
 
 // run the sagas

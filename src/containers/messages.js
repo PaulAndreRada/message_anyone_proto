@@ -4,10 +4,10 @@ import { listenToServer } from '../actions'
 
 const mapStateToProps = (state) => {
   return {
-    fetching: state.messengerNetwork.fetching,
-    data: state.messengerNetwork.messages,
-    error: state.messengerNetwork.error,
-    messages: state.messengerNetwork.messages
+    fetching: state.socketNetwork.fetching,
+    data: state.socketNetwork.messages,
+    error: state.socketNetwork.error,
+    messages: state.socketNetwork.messages
   }
 }
 
