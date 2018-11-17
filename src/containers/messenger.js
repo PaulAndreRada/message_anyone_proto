@@ -4,7 +4,6 @@ import Messages from '../containers/messages'
 
 class MessengerApp extends Component {
   render(){
-    console.log(this.props)
     return(
       <div>
         <Messages />

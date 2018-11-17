@@ -1,5 +1,8 @@
 import { connect } from 'react-redux'
-import { updateComposer, sendMessage } from '../actions'
+import {
+  updateComposer,
+  sendMessage
+} from '../actions'
 import MessageInput from '../components/messageInput.js'
 
 
@@ -17,6 +20,7 @@ const mapDispatchToProps = (dispatch) => {
     onMessagePost: (e,msg) => {
       e.preventDefault();
       dispatch(sendMessage(msg))
+      dispatch(updateComposer(''));
     }
   }
 }

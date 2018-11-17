@@ -7,7 +7,7 @@ class MessageList extends Component {
   }
   renderMessages(){
     // catch undefined error
-    if(!this.props.data.messages){ this.props.data.messages = [] }
+    if(!this.props.messages){ this.props.messages = [] }
     return (
     <div>
       { this.props.messages.map(message => {
