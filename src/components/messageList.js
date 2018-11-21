@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
 import uuid from 'uuid/v4';
+import styled from 'styled-components';
+import Avatar from './avatar';
+
+const Message = styled.div`
+    background: ${(props) => props.from === 'web' ? "#DFF7FF": "#F5F5F5" };
+`
+
 
 class MessageList extends Component {
   componentWillMount(){
@@ -12,11 +19,11 @@ class MessageList extends Component {
     <div>
       { this.props.messages.map(message => {
         return(
-          <div
+          <Message
             key={uuid()}
-            className={message.from}>
+            from={message.from}>
             {message.message}
-          </div>) }
+          </Message>) }
           )}
     </div>)
   }
