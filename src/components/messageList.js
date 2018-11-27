@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 import uuid from 'uuid/v4';
-import styled from 'styled-components';
-import Avatar from './avatar';
-
-const Message = styled.div`
-    background: ${(props) => props.from === 'web' ? "#DFF7FF": "#F5F5F5" };
-`
-
+import Message from './message';
 
 class MessageList extends Component {
   componentWillMount(){
@@ -19,11 +13,12 @@ class MessageList extends Component {
     <div>
       { this.props.messages.map(message => {
         return(
-          <Message
-            key={uuid()}
-            from={message.from}>
-            {message.message}
-          </Message>) }
+            <Message
+              key={uuid()}
+              from={message.from}
+              sender={message.sender}
+              message={message.message}/>
+            )}
           )}
     </div>)
   }

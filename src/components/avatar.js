@@ -3,18 +3,20 @@ import styled from 'styled-components';
 
 const Pic = styled.div`
   display: flex;
-  height: 24px;
-  width: 24px;
-  background: 'green';
+  height: 34px;
+  width: 34px;
+  background-image: url("https://http.cat/100");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 100%;
 `
-
-// make a message and insert it in the messages list as a single component
 
 class Avatar extends Component {
   render(){
     return(
       <div>
-        <Pic>test</Pic>
+        <Pic />
       </div>
     )
   }
