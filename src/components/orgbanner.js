@@ -12,17 +12,30 @@ const Banner = styled.div`
   font-size: 16px;
   color: #7979B2;
   border-bottom: 1px solid #E7E7E7;
+
+  .orgImg {
+    height: 30px;
+    width: 30px;
+    margin: 8px 8px 8px 0;
+  }
+
+  .orgName {
+    display: flex;
+  }
 `
-/* todo:
-  text is not exactly as design
-  how to best inport the svg?
-*/
 
 class OrgBanner extends Component {
     render(){
       return (
         <Banner>
-          <div>Santa Monica General Hospital</div>
+          <img
+            src={require('../assets/bannerlogo.svg')}
+            alt="organization's logo"
+            className="orgImg" />
+          <div
+            className="orgName">
+            Santa Monica General Hospital
+          </div>
         </Banner>
       )
     }

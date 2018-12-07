@@ -5,6 +5,7 @@ const Pic = styled.div`
   display: flex;
   height: 34px;
   width: 34px;
+  margin: 0 6px;
   background-image: url("https://http.cat/100");
   background-size: cover;
   background-position: center;

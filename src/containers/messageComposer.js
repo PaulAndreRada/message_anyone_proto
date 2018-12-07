@@ -5,7 +5,6 @@ import {
 } from '../actions'
 import MessageInput from '../components/messageInput.js'
 
-
 const mapStateToProps = (state) => {
   return{
     composerText: state.messageComposer.composerText,
@@ -19,6 +18,7 @@ const mapDispatchToProps = (dispatch) => {
     },
     onMessagePost: (e,msg) => {
       e.preventDefault();
+      if(msg===""){ return false };
       dispatch(sendMessage(msg))
       dispatch(updateComposer(''));
     }

@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import uuid from 'uuid/v4';
 import Message from './message';
 
+const MessagesCon = {
+  display: 'flex',
+  flexGrow: '2',
+  flexDirection: 'column'
+}
+
 class MessageList extends Component {
   componentWillMount(){
     this.props.onLoad();
@@ -10,13 +16,12 @@ class MessageList extends Component {
     // catch undefined error
     if(!this.props.messages){ this.props.messages = [] }
     return (
-    <div>
+    <div style={MessagesCon}>
       { this.props.messages.map(message => {
         return(
             <Message
               key={uuid()}
               from={message.from}
-              sender={message.sender}
               message={message.message}/>
             )}
           )}
@@ -25,7 +30,7 @@ class MessageList extends Component {
   render(){
     return(
       <div>
-        {this.props.data? this.renderMessages() : (<div>no data</div>) }
+        {this.props.data? this.renderMessages() : (<div></div>) }
       </div>
     )
   }
