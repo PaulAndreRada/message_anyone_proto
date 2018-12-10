@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import logo from '../assets/bannerlogo.svg';
 
 const Banner = styled.div`
   display: flex;
@@ -29,7 +30,7 @@ class OrgBanner extends Component {
       return (
         <Banner>
           <img
-            src={require('../assets/bannerlogo.svg')}
+            src={logo}
             alt="organization's logo"
             className="orgImg" />
           <div
