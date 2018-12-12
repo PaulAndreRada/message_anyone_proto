@@ -5,15 +5,11 @@ import Message from './message';
 const MessagesCon = {
   display: 'flex',
   flexGrow: '2',
-  flexDirection: 'column',
-  position: 'fixed'
+  flexDirection: 'column'
+  // possible hack - use fixed when keyboard is open in order to keep the messages on screen
 }
 
 class MessageList extends Component {
-  constructor(Props){
-    super(Props);
-    this.messageList = {};
-  }
   componentWillMount(){
     this.props.onLoad();
   }
@@ -21,9 +17,7 @@ class MessageList extends Component {
     // catch undefined error
     if(!this.props.messages){ this.props.messages = [] }
     return (
-    <div
-      style={MessagesCon}
-      ref={ (list) => { this.messageList = list }}>
+    <div style={MessagesCon}>
       { this.props.messages.map(message => {
         return(
             <Message
