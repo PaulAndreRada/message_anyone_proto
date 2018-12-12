@@ -60,6 +60,13 @@ const Composer = styled.form`
 `
 
 class MessageInput extends Component {
+  constructor(props){
+    super(props);
+    this.composer = {};
+  }
+  componentDidMount(){
+    this.composer.focus();
+  }
   render(){
     return (
       <Composer>
@@ -73,12 +80,13 @@ class MessageInput extends Component {
           className="inputBar"
           type='text'
           placeholder='Write message here...'
+          ref={ (textarea) => { this.composer = textarea } }
           value={ this.props.composerText }
           onChange={ (e) =>  this.props.onTextChange(e.target.value) }
           />
         <div
           className="button"
-          onClick={ (e) => this.props.onMessagePost(e, this.props.composerText) }>
+          onClick={ (e) => this.props.onMessagePost(e, this.props.composerText, this.composer) }>
           Send
         </div>
       </Composer>

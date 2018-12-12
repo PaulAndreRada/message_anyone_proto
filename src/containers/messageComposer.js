@@ -16,11 +16,12 @@ const mapDispatchToProps = (dispatch) => {
     onTextChange: (text) => {
       dispatch(updateComposer(text))
     },
-    onMessagePost: (e,msg) => {
+    onMessagePost: (e,msg, composer) => {
       e.preventDefault();
       if(msg===""){ return false };
       dispatch(sendMessage(msg))
       dispatch(updateComposer(''));
+      composer.focus();
     }
   }
 }
