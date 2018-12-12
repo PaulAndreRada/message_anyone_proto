@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch) => {
       if(msg===""){ return false };
       dispatch(sendMessage(msg))
       dispatch(updateComposer(''));
-      composer.focus();
+      //composer.focus();
     }
   }
 }
