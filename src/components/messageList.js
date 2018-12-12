@@ -5,10 +5,15 @@ import Message from './message';
 const MessagesCon = {
   display: 'flex',
   flexGrow: '2',
-  flexDirection: 'column'
+  flexDirection: 'column',
+  position: 'fixed'
 }
 
 class MessageList extends Component {
+  constructor(Props){
+    super(Props);
+    this.messageList = {};
+  }
   componentWillMount(){
     this.props.onLoad();
   }
@@ -16,7 +21,9 @@ class MessageList extends Component {
     // catch undefined error
     if(!this.props.messages){ this.props.messages = [] }
     return (
-    <div style={MessagesCon}>
+    <div
+      style={MessagesCon}
+      ref={ (list) => { this.messageList = list }}>
       { this.props.messages.map(message => {
         return(
             <Message
