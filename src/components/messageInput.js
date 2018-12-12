@@ -44,14 +44,14 @@ const Composer = styled.form`
   .button {
     display: flex;
     flex-grow: 1;
-    height: 30px;
-    max-width: 48px;
+    height: 24px;
+    max-width: 52px;
     background: #489EB4;
     border: none;
     border-radius: 5px;
     text-align: center;
-    padding-left: 8px;
-    padding-bottom: 3px;
+    padding-top: 8px;
+    padding-left: 6px;
     font-family: "Helvetica Neue";
     font-size: 13px;
     font-weight: 500;
@@ -62,8 +62,7 @@ const Composer = styled.form`
 class MessageInput extends Component {
   render(){
     return (
-      <Composer
-        onSubmit={ (e) => this.props.onMessagePost(e, this.props.composerText) }>
+      <Composer>
         <div className="plusButton">
           <img
             className="plusIcon"
@@ -77,10 +76,11 @@ class MessageInput extends Component {
           value={ this.props.composerText }
           onChange={ (e) =>  this.props.onTextChange(e.target.value) }
           />
-        <input
+        <div
           className="button"
-          type='submit'
-          value='Send'/>
+          onClick={ (e) => this.props.onMessagePost(e, this.props.composerText) }>
+          Send
+        </div>
       </Composer>
     )
   }
