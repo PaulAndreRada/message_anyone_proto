@@ -17,6 +17,7 @@ const MessageBubble = styled.div`
     display: flex;
     flex-direction: column;
     flex-grow: -1;
+    max-width: 523px;
     margin-bottom: 12px;
     margin-left: ${(props) => props.from === 'web' ? '54px': '0'};
     margin-right: ${(props) => props.from === 'web' ? '10px': '54px'};
@@ -37,6 +38,7 @@ const MessageBubble = styled.div`
     font-weight: 400;
     color: #35333C;
     padding-bottom: 6px;
+    word-wrap: break-word;
   }
   .metaTags {
     display: flex;

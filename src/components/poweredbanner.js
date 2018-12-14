@@ -13,6 +13,7 @@ const Banner = styled.div`
   .logo{
     height: 14px;
     width: 14px;
+    margin-top: 1px;
     margin-right: 5px;
   }
 
