@@ -8,7 +8,7 @@ const Banner = styled.div`
   align-items: center;
   justify-content: center;
   background: white;
-  font-family: Helvetica Neue
+  font-family: Helvetica Neue  
   font-weight: 400;
   font-size: 16px;
   color: #7979B2;
