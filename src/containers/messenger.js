@@ -13,7 +13,7 @@ const appCon = {
   justifyContent: "space-between",
 }
 
-const messageCon = {
+const topCon = {
   display: "flex",
   flexDirection: "column",
 }
@@ -22,6 +22,10 @@ const headerCon = {
   display: "flex",
   width: '100%',
   flexDirection: 'column',
+}
+
+const messagesCon = {
+  paddingTop: '100%'
 }
 
 const mapStateToProps = (state) => {
@@ -35,7 +39,6 @@ const mapStateToProps = (state) => {
 class MessengerApp extends Component {
   haveMessages(){
     const messages = this.props.messages;
-
     // is there an array?
     if( messages === null ){ return false }
     else if( typeof messages === "object"){
@@ -48,12 +51,14 @@ class MessengerApp extends Component {
   render(){
     return(
       <div style={appCon}>
-        <div style={messageCon}>
+        <div style={topCon}>
           <div style={headerCon}>
             <OrgBanner />
           </div>
-          { this.haveMessages()? <Bang /> : "" }
-          <Messages />
+          <div style={messagesCon}>
+            { this.haveMessages() ? <Bang /> : "" }
+            <Messages />
+          </div>
         </div>
         <MessageComposer />
       </div>
