@@ -91,6 +91,8 @@ class MessageInput extends Component {
             className="inputBar"
             type='text'
             placeholder='Write message here...'
+            autocorrect="on"
+            auticapitalize="on"
             ref={ (textarea) => { this.composer = textarea } }
             value={ this.props.composerText }
             onChange={ (e) =>  this.props.onTextChange(e.target.value) }

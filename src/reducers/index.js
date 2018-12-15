@@ -13,7 +13,6 @@ function messageComposer( state={composerText:''}, action ){
   }
 }
 
-
 const socketInitState = {
   fetching: false,
   connected: false,

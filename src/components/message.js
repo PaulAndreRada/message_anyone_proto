@@ -101,7 +101,8 @@ class Message extends Component {
           from={this.props.from}>
           { this.isSender() ? '' : <Avatar /> }
           <MessageBubble
-            from={this.props.from}>
+            from={this.props.from}
+            contenteditable>
                 {this.isSender() ? '' : (<div className="name">Emily Waren</div>)}
                 <div className="message">{this.props.message}</div>
                 <div className="metaTags">
