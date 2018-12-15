@@ -24,10 +24,6 @@ const headerCon = {
   flexDirection: 'column',
 }
 
-const messagesCon = {
-  paddingTop: '100%'
-}
-
 const mapStateToProps = (state) => {
   return{
     fetching: state.socketNetwork.fetching,
@@ -55,10 +51,8 @@ class MessengerApp extends Component {
           <div style={headerCon}>
             <OrgBanner />
           </div>
-          <div style={messagesCon}>
-            { this.haveMessages() ? <Bang /> : "" }
-            <Messages />
-          </div>
+          { this.haveMessages() ? <Bang /> : "" }
+          <Messages />
         </div>
         <MessageComposer />
       </div>
