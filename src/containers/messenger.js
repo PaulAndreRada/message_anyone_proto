@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import MessageComposer from '../containers/messageComposer';
 import Messages from '../containers/messages';
 import OrgBanner from '../components/orgbanner';
@@ -21,10 +22,29 @@ const headerCon = {
   display: "flex",
   width: '100%',
   flexDirection: 'column',
-  position: "relative" // change to fixed for scrolling
+}
+
+const mapStateToProps = (state) => {
+  return{
+    fetching: state.socketNetwork.fetching,
+    error: state.socketNetwork.error,
+    messages: state.socketNetwork.messages
+  }
 }
 
 class MessengerApp extends Component {
+  haveMessages(){
+    const messages = this.props.messages;
+
+    // is there an array?
+    if( messages === null ){ return false }
+    else if( typeof messages === "object"){
+      // if there's an array, check if it's empty
+      if( messages.length === 0 ){ return false }
+      // if it's not empty return true
+      else{ return true }
+    }
+  }
   render(){
     return(
       <div style={appCon}>
@@ -32,7 +52,7 @@ class MessengerApp extends Component {
           <div style={headerCon}>
             <OrgBanner />
           </div>
-          <Bang />
+          { this.haveMessages()? <Bang /> : "" }
           <Messages />
         </div>
         <MessageComposer />
@@ -41,4 +61,8 @@ class MessengerApp extends Component {
   }
 }
 
-export default MessengerApp;
+const Messenger = connect(
+  mapStateToProps,
+)(MessengerApp);
+
+export default Messenger;

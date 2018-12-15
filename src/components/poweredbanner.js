@@ -28,7 +28,7 @@ class PoweredBanner extends Component {
   render(){
     return (
       <Banner>
-        <img src={logo} className="logo" />
+        <img src={logo} className="logo" alt="TigerConnect Logo" />
         <div className="text">Powered by TigerConnect</div>
       </Banner>
     )
