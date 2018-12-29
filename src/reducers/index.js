@@ -1,12 +1,22 @@
 import { combineReducers } from 'redux'
 import * as Actions from '../actions'
 
-function messageComposer( state={composerText:''}, action ){
+const composerInitState = {
+  composerText : '',
+  isBlurred: false
+}
+
+function messageComposer( state=composerInitState, action ){
   switch(action.type) {
     case Actions.UPDATE_COMPOSER:
       return {
         ...state,
         composerText: action.text
+      }
+    case Actions.UPDATE_BLURRED:
+      return {
+        ...state,
+        isBlurred: action.bool
       }
     default:
       return state

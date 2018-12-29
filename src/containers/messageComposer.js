@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import {
   updateComposer,
+  updateBlured,
   sendMessage
 } from '../actions'
 import MessageInput from '../components/messageInput.js'
@@ -15,6 +16,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onTextChange: (text) => {
       dispatch(updateComposer(text))
+    },
+    updateBlurred: (bool) => {
+      dispatch(updateBlured(bool))
     },
     onMessagePost: (e,msg, composer) => {
       e.preventDefault();

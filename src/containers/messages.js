@@ -7,7 +7,8 @@ const mapStateToProps = (state) => {
     fetching: state.socketNetwork.fetching,
     data: state.socketNetwork.messages,
     error: state.socketNetwork.error,
-    messages: state.socketNetwork.messages
+    messages: state.socketNetwork.messages,
+    isBlurred: state.messageComposer.isBlurred
   }
 }
 

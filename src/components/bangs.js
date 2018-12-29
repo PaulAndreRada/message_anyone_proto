@@ -8,11 +8,7 @@ const Bang = styled.div`
   padding: 13px 0;
 
   div {
-    display: flex;
-    padding: 6px 14px;
-    justify-content: center;
-    aling-items: center;
-    text-align: center;
+    
     background: #E6EBF1;
     color: #4570A9;
     border-radius: 6px;

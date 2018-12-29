@@ -4,6 +4,10 @@ import PoweredBanner from './poweredbanner';
 
 const ComposerCon = styled.div`
   display: flex;
+  flex: none;
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
   flex-direction: column;
 `
 
@@ -13,6 +17,8 @@ const Composer = styled.form`
   border-top: 1px solid #E6ECF0;
   padding: 14px;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  background: white;
+
 
   .plusButton {
     display: flex;
@@ -91,6 +97,8 @@ class MessageInput extends Component {
             className="inputBar"
             type='text'
             placeholder='Write message here...'
+            onFocus={ () => this.props.updateBlurred(true) }
+            onBlur={ () => this.props.updateBlurred(false) }
             ref={ (textarea) => { this.composer = textarea } }
             value={ this.props.composerText }
             onChange={ (e) =>  this.props.onTextChange(e.target.value) }

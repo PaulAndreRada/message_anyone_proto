@@ -4,6 +4,7 @@ import MessageComposer from '../containers/messageComposer';
 import Messages from '../containers/messages';
 import OrgBanner from '../components/orgbanner';
 import Bang from '../components/bangs';
+import { HEADER_HEIGHT } from '../configs';
 
 const appCon = {
   height:"100%",
@@ -16,6 +17,7 @@ const appCon = {
 const topCon = {
   display: "flex",
   flexDirection: "column",
+  paddingTop: HEADER_HEIGHT + 'px'
 }
 
 const headerCon = {

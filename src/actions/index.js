@@ -1,5 +1,6 @@
 // Composer Actions
 export const UPDATE_COMPOSER = "UPDATE_COMPOSER"
+export const UPDATE_BLURRED = "UPDATE_BLURRED"
 
 // Socket
 export const LISTEN_TO_SERVER = "LISTEN_TO_SERVER";
@@ -16,6 +17,13 @@ export const updateComposer = (text) => {
   return {
     type: UPDATE_COMPOSER,
     text
+  }
+}
+
+export const updateBlured = (bool) => {
+  return {
+    type: UPDATE_BLURRED,
+    bool
   }
 }
 
