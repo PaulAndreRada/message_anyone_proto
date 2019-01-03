@@ -31,10 +31,14 @@ class MessageList extends Component {
     return this.messagesCon.offsetHeight;
   }
   scrollMessagesTo(topPX){
-    window.scrollTo({
-      top: topPX,
-      behavior: 'smooth'
-    });
+    const messages = this.messagesCon,
+          length = messages.children.length;
+    // leave if the message is unavailable
+    if(!messages){ return false }
+    // if the child we are looking for exist then scroll to it
+    else if(messages.children[length-1]){
+      messages.children[length-1].scrollIntoView({behavior: 'smooth'});
+    }
   }
   showLastMessage(){
     // if the container for the messages is not yet up exit function
