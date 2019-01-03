@@ -8,8 +8,6 @@ const Bang = styled.div`
   padding: 13px 0;
 
   div {
-    
-    background: #E6EBF1;
     color: #4570A9;
     border-radius: 6px;
     font-family: Helvetica Neue
